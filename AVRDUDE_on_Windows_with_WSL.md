@@ -148,7 +148,8 @@ You should also have a GitHub account. You can signup [here](https://github.com/
    - Should install automatically.
 
 4. On the bottom-left conner, a green icon should appear saying `WSL: your distro`.
-        ![Remote Icon with WSL: Ubuntu](images/VS_Code_WSL.PNG "Remote WSL: Ubuntu")
+
+    ![Remote Icon with WSL: Ubuntu](images/VS_Code_WSL.PNG "Remote WSL: Ubuntu")
 
 ---
 
@@ -200,6 +201,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
     ```
 
 5. Edit the MakefileTemplate
+
     In `UCRCS120B_AVRTools/templates/MakefileTemplate` file, edit line 14 to be the path to your SimAVR installation.
 
     ```makefile
@@ -212,6 +214,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
     ```
 
 6. Edit createProject.sh
+
     In `UCRCS120B_AVRTools/createProject.sh` file, edit line 76 to be the relative path from your SIMAVRDIR to the avr_mcu_section.h file.
 
     ```cpp
@@ -224,6 +227,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
     ```
 
 7. Customize createProject.sh (optional)
+
     Replace line 114 to 121 with the following code to initialize and push the directory to a GitHub repo automaticaly.
 
     ```bash
@@ -263,17 +267,20 @@ You need to use avrdude.exe in Windows to program your chip, since WSL does not 
     - Download area click [here](https://download.savannah.gnu.org/releases/avrdude/?C=M&O=D).
     - Select mingw32 version, file name should look like `avrdude-*.*-mingw32.zip`.
 
-2. Unzip and put it in a folder which directory has **no space**;
+2. Unzip and put it in a folder which entire directory has **no space**;
 
-3. Change `UCRCS120B_AVRTools/templates/MakeFileTemplate` line 37 to `avrdude.exe`'s directory;
-    If avrdude.exe is in `E:\Desktop\CS_120B\avrdude-6.3`:
+3. Edit MakeFileTemplate
 
-    ```bash
+    Change `UCRCS120B_AVRTools/templates/MakeFileTemplate` line 37 to `avrdude.exe`'s directory;
+
+    If avrdude.exe is in `E:\CS_120B\avrdude-6.3`:
+
+    ```makefile
     # Edit this
     PROGRAM=avrdude
 
     # To this
-    PROGRAM=/mnt/e/Desktop/CS_120B/avrdude-6.3/avrdude.exe
+    PROGRAM=/mnt/e/CS_120B/avrdude-6.3/avrdude.exe
     ```
 
 4. If you are having error (and you most likely are) `avrdude.exe: jtag3_open_common(): Did not find any device matching VID 0x03eb and PID list: 0x2141`, go to [this section](#install-driver-for-atmel-programming-board).
