@@ -61,7 +61,9 @@ You should also have a GitHub account. You can signup [here](https://github.com/
     $ alias cs120blab="cd /mnt/e/Desktop/CS_120B/Labs"
     ```
 
-    To make the alias entry permenent, add the command in `~/.bash_aliases` file (`~/.bashrc` if you are on other distros).
+    To make the alias entry permenent, add the entry in `~/.bash_aliases` file (`~/.bashrc` if you are on other distros).
+
+    For other helpful aliases for this course, go [here](aliases.md).
 
 ### Git
 
@@ -73,6 +75,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
     ```
 
 2. (Optional) Connecting to GitHub with SSH
+
     You don't have to use a SSH key to access GitHub, but I think it's easier this way. You can also skip this step if you have already done so.
 
     1. Check if you have ssh key or not
