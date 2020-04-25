@@ -101,7 +101,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
             ...
         ```
 
-        Go to step 4.
+        Go to step iv.
 
     2. Create a SSH key in WSL.
         Replace `your_email@example.com` with your email used in GitHub.
