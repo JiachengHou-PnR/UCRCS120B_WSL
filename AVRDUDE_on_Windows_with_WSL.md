@@ -15,7 +15,7 @@ If you are using a Windows machine, using WSL with VS Code is a good way to test
 
 ## Prerequisites
 
-On your Windows machine, it should have these intalled:
+On your Windows machine, these should be installed:
 
 1. WSL installed and initialized
     - Follow [this link](https://docs.microsoft.com/en-us/windows/wsl/install-win10) to install WSL on your machine, and [this link](https://docs.microsoft.com/en-us/windows/wsl/initialize-distro) to initialize it.
@@ -38,7 +38,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
 
 ### Working Directory
 
-1. In Windows, create a folder for your CS120B labs as your working direcory, it should have **no space** in its dirctory;
+1. In Windows, create a folder for your CS120B labs as your working direcory, it should have **no space** in its directory;
     - Good example: "E:\Desktop\CS_120B\Labs", this directory will be used in all examples below.
 
 2. To access this folder in WSL, do `
@@ -77,6 +77,8 @@ You should also have a GitHub account. You can signup [here](https://github.com/
 2. (Optional) Connecting to GitHub with SSH
 
     You don't have to use a SSH key to access GitHub, but I think it's easier this way. You can also skip this step if you have already done so.
+
+    Alternatively, you can also follow [this guide](https://help.github.com/en/github/using-git/caching-your-github-password-in-git) to cache your login credentials and connect with HTTPS.
 
     1. Check if you have ssh key or not
 
@@ -137,7 +139,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
 
 ### VS Code
 
-1. Install VS Code Server for x64
+1. Install VS Code Server for x64;
 
    ```bash
    # In any directory
@@ -145,9 +147,9 @@ You should also have a GitHub account. You can signup [here](https://github.com/
    > Installing VS Code Server for x64 (...)
    ```
 
-2. Allow firewall connection
+2. Allow firewall connection;
 
-3. Install VS Code "Remote - WSL" extention
+3. Install VS Code "Remote - WSL" extension;
    - Should install automatically.
 
 4. On the bottom-left conner, a green icon should appear saying `WSL: your distro`.
