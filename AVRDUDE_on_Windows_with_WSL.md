@@ -5,14 +5,13 @@ This guide to test and program the chip on Windows using WSL (Windows Subsystem 
 If you are using a Windows machine, using WSL with VS Code is a good way to test your code and program your chip without using a virtual machine.
 
 - [Prerequisites](#prerequisites)
-- [Setup Basic Tools in WSL](#setup-basic-tools-in-wsl)
+- [Setup the Basics in WSL](#setup-the-basics-in-wsl)
   - [Working Directory](#working-directory)
   - [Git](#git)
   - [VS Code](#vs-code)
 - [Get AVR-ToolChain working on WSL](#get-avr-toolchain-working-on-wsl)
-- [Getting AvrDude Working on WSL](#getting-avrdude-working-on-wsl)
-- [Installing the correct driver for Atmel programming board](#installing-the-correct-driver-for-atmel-programming-board)
-- [Bash Script for Saving Your Project](#bash-script-for-saving-your-project)
+- [Get AvrDude Working in WSL](#get-avrdude-working-in-wsl)
+- [Install Driver for Atmel Programming board](#install-driver-for-atmel-programming-board)
 
 ## Prerequisites
 
@@ -35,11 +34,11 @@ You should also have a GitHub account. You can signup [here](https://github.com/
 
 ---
 
-## Setup Basic Tools in WSL
+## Setup the Basics in WSL
 
 ### Working Directory
 
-1. In Windows, create a folder for your CS120B labs as your working direcory (wkdir), it should have **no space** in its dirctory;
+1. In Windows, create a folder for your CS120B labs as your working direcory, it should have **no space** in its dirctory;
     - Good example: "E:\Desktop\CS_120B\Labs", this directory will be used in all examples below.
 
 2. To access this folder in WSL, do `
@@ -88,9 +87,9 @@ You should also have a GitHub account. You can signup [here](https://github.com/
         > ls: cannot access '/home/you/.ssh': No such file or directory
         ```
 
-        Continue.
+        continue to the next step;
 
-        If prompt
+        if prompt
 
         ```bash
         > total 8
@@ -99,7 +98,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
 
         Go to step 4.
 
-    2. Create a SSH key in WSL
+    2. Create a SSH key in WSL.
         Replace `your_email@example.com` with your email used in GitHub.
 
         ```bash
@@ -111,7 +110,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
         > Enter same passphrase again: [Type passphrase again]
         ```
 
-    3. Add SSH key to the ssh-agent
+    3. Add SSH key to the ssh-agent.
 
         ```bash
         $ eval $(ssh-agent -s)
@@ -120,7 +119,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
         $ ssh-add ~/.ssh/id_rsa
         ```
 
-    4. Add SSH key to GitHub account
+    4. Add SSH key to GitHub account.
 
         ```bash
         $ vim ~/.ssh/id_rsa.pub
@@ -138,6 +137,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
 1. Install VS Code Server for x64
 
    ```bash
+   # In any directory
    $ code .
    > Installing VS Code Server for x64 (...)
    ```
@@ -157,7 +157,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
 1. Install basic components
 
    ```bash
-   $ sudo apt-get cmake make zlib1g zlib1g-dev
+   $ sudo apt-get make zlib1g zlib1g-dev zip
    ```
 
 2. Install simAVR
@@ -170,7 +170,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
     2. Install by `git clone`
 
         ```bash
-        # Clone it to your home dir
+        # Clone it to your home directory
         $ cd ~
         $ git clone git@github.com:buserror/simavr.git
 
@@ -188,9 +188,9 @@ You should also have a GitHub account. You can signup [here](https://github.com/
     $ sudo apt-get install gcc-avr binutils-avr avr-libc gdb-avr
     ```
 
-    - You can skip step 3 and onward in the AVR-GCC Toolchain installation guide since we are  using avrdude in Windows instead of WSL.
+    - If you are following the AVR-GCC Toolchain [installation guide](http://maxembedded.com/2015/06/setting-up-avr-gcc-toolchain-on-linux-and-mac-os-x/) linked in UCRCS120B_AVRTools' GitHub page, you can skip step 3 and onward since we are using avrdude in Windows instead of WSL.
 
-4. Clone UCRCS120B_AVRTools to your wkdir;
+4. Clone UCRCS120B_AVRTools to your working directory;
 
     ```bash
     $ git clone git@github.com:jmcda001/UCRCS120B_AVRTools.git
@@ -207,6 +207,7 @@ You should also have a GitHub account. You can signup [here](https://github.com/
     SIMAVRDIR=SET YOUR SIMAVR DIRECTORY HERE
 
     # To this
+    # If simavr is in your home directory like we showed above
     SIMAVRDIR=/home/$(USER)/simavr/simavr/
     ```
 
@@ -218,11 +219,12 @@ You should also have a GitHub account. You can signup [here](https://github.com/
     #include "include/simavr/avr/avr_mcu_section.h"
 
     // To this
+    // If simavr is in your home directory like we showed above
     #include "/home/${USER}/simavr/simavr/sim/avr/avr_mcu_section.h"
     ```
 
 7. Customize createProject.sh (optional)
-    Replace line 114 to 121 with the following code to initialize the directory to a GitHub repo.
+    Replace line 114 to 121 with the following code to initialize and push the directory to a GitHub repo automaticaly.
 
     ```bash
     echo -e "Initialize the directory to a GitHub repo."
@@ -252,19 +254,19 @@ You should also have a GitHub account. You can signup [here](https://github.com/
 
 ---
 
-## Getting AvrDude Working on WSL
+## Get AvrDude Working in WSL
 
 **In WSL:**
 You need to use avrdude.exe in Windows to program your chip, since WSL does not support libusb devices (such as the Atmel board when using avrdude).
 
 1. Download avrdude on [official website](https://www.nongnu.org/avrdude/);
-    - Download area click [HERE](https://download.savannah.gnu.org/releases/avrdude/?C=M&O=D)
+    - Download area click [here](https://download.savannah.gnu.org/releases/avrdude/?C=M&O=D).
     - Select mingw32 version, file name should look like `avrdude-*.*-mingw32.zip`.
 
-2. Unzip and put it in a folder which dirctory has **no space**;
+2. Unzip and put it in a folder which directory has **no space**;
 
-3. Change `UCRCS120B_AVRTools/templates/MakeFileTemplate` line 37 to `avrdude.exe`'s directory.
-    If avrdude.exe is in `E:\Desktop\CS_120B\avrdude-6.3`
+3. Change `UCRCS120B_AVRTools/templates/MakeFileTemplate` line 37 to `avrdude.exe`'s directory;
+    If avrdude.exe is in `E:\Desktop\CS_120B\avrdude-6.3`:
 
     ```bash
     # Edit this
@@ -274,14 +276,15 @@ You need to use avrdude.exe in Windows to program your chip, since WSL does not 
     PROGRAM=/mnt/e/Desktop/CS_120B/avrdude-6.3/avrdude.exe
     ```
 
-4. If you are having error `avrdude.exe: jtag3_open_common(): Did not find any device matching VID 0x03eb and PID list: 0x2141`, go to [this section](#installing-the-correct-driver-for-atmel-programming-board).
+4. If you are having error (and you most likely are) `avrdude.exe: jtag3_open_common(): Did not find any device matching VID 0x03eb and PID list: 0x2141`, go to [this section](#install-driver-for-atmel-programming-board).
 
 ---
 
-## Installing the correct driver for Atmel programming board
+## Install Driver for Atmel Programming board
 
-If you are having error **in Windows**, `avrdude.exe: jtag3_open_common(): Did not find any device matching VID 0x03eb and PID list: 0x2141` in avrdude(ss), follow steps below.
-If you are having a similar error in WSL like `avrdude: jtag3_open_common(): Did not find any device matching VID 0x03eb and PID list: 0x2141`, you should go to [this part](#getting-avrdude-working-on-wsl).
+If you are having error in **Windows**, `avrdude.exe: jtag3_open_common(): Did not find any device matching VID 0x03eb and PID list: 0x2141` in avrdude(ss), follow steps below.
+
+If you are having a similar error in **WSL**, `avrdude: jtag3_open_common(): Did not find any device matching VID 0x03eb and PID list: 0x2141`, you should go to [this part](#get-avrdude-working-in-wsl).
 
 1. Download Zadig from its [official website](https://zadig.akeo.ie/);
 
@@ -290,13 +293,13 @@ If you are having a similar error in WSL like `avrdude: jtag3_open_common(): Did
 3. Open `zadig.exe`;
 
 4. In the dropdown list, select "Atmel-IEC ****";
-    - Might have 2-3 devices start with "Atmel-IEC", repeat on all of them
-    - If you don't see it, select "List All Devices" in "Option" menu
+    - Might be 2-3 devices start with "Atmel-IEC", repeat step 4-7 on all of them.
+    - If you don't see it, select "List All Devices" in "Option" menu.
 
-5. Check USB ID, should be 03EB 2141 (might have 01 or 02 in the third box);
+5. Check USB ID, should be `03EB` `2141` (might have `01` or `02` in the third box);
 
 6. Select "libusb-win32" as the driver to be installed;
 
-7. Click "Install Driver" or "Replace Driver".
+7. Click "Install Driver" or "Replace Driver";
 
-8. In Device Manager, the board should be under "libusb-win32 Devices"
+8. In Device Manager, the board should be under "libusb-win32 Devices".
