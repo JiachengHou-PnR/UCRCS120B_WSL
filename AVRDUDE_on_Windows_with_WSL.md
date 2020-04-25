@@ -306,6 +306,8 @@ If you are having a similar error in **WSL**, `avrdude: jtag3_open_common(): Did
 
 3. Open `zadig.exe`;
 
+    ![Zadig](images/Zadig.png "Zadig Interface")
+
 4. In the dropdown list, select "Atmel-IEC ****";
     - Might be 2-3 devices start with "Atmel-IEC", repeat step 4-7 on all of them.
     - If you don't see it, select "List All Devices" in "Option" menu.
