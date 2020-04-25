@@ -22,8 +22,8 @@ then
 fi
 
 echo 'Copying current files to turnin...';
-cp source/main.c turnin/${NET_ID}_lab"$lab"_part"$part".c
-cp test/tests.gdb turnin/${NET_ID}_lab"$lab"_part"$part"_tests.gdb
+cp source/main.c turnin/"$NET_ID"_lab"$lab"_part"$part".c
+cp test/tests.gdb turnin/"$NET_ID"_lab"$lab"_part"$part"_tests.gdb
 echo 'Done.'
 echo
 
