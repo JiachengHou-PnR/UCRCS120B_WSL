@@ -158,6 +158,8 @@ You should also have a GitHub account. You can signup [here](https://github.com/
 
 ## Get AVR-ToolChain working on WSL
 
+This part contains steps specific for using [UCRCS120B_AVRTools](https://github.com/jmcda001/UCRCS120B_AVRTools).
+
 1. Install basic components
 
    ```bash
