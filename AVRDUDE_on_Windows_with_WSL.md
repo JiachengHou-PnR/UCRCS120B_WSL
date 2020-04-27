@@ -165,7 +165,7 @@ This part contains steps specific for using [UCRCS120B_AVRTools](https://github.
 1. Install basic components
 
    ```bash
-   $ sudo apt-get make zlib1g zlib1g-dev zip
+   $ sudo apt-get install make zlib1g zlib1g-dev zip
    ```
 
 2. Install simAVR
@@ -296,9 +296,7 @@ You need to use avrdude.exe in Windows to program your chip, since WSL does not 
 
 ## Install Driver for Atmel Programming board
 
-If you are having error in **Windows**, `avrdude.exe: jtag3_open_common(): Did not find any device matching VID 0x03eb and PID list: 0x2141` in avrdude(ss), follow steps below.
-
-If you are having a similar error in **WSL**, `avrdude: jtag3_open_common(): Did not find any device matching VID 0x03eb and PID list: 0x2141`, you should go to [this part](#get-avrdude-working-in-wsl).
+If you are having error in **Windows** or **WSL**, `avrdude.exe: jtag3_open_common(): Did not find any device matching VID 0x03eb and PID list: 0x2141` in avrdude(ss), follow steps below.
 
 1. Download Zadig from its [official website](https://zadig.akeo.ie/);
 
@@ -308,8 +306,8 @@ If you are having a similar error in **WSL**, `avrdude: jtag3_open_common(): Did
 
     ![Zadig](images/Zadig.PNG "Zadig Interface")
 
-4. In the dropdown list, select "Atmel-IEC ****";
-    - Might be 2-3 devices start with "Atmel-IEC", repeat step 4-7 on all of them.
+4. In the dropdown list, select "Atmel-ICE ****";
+    - Might be 2-3 devices start with "Atmel-ICE", repeat step 4-7 on all of them.
     - If you don't see it, select "List All Devices" in "Option" menu.
 
 5. Check USB ID, should be `03EB` `2141` (might have `01` or `02` in the third box);
