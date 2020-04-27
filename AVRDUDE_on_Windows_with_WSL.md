@@ -235,7 +235,7 @@ This part contains steps specific for using [UCRCS120B_AVRTools](https://github.
 
 7. ~~Customize createProject.sh~~ (Already implemented on the latest ver. of UCRCS120B_AVRTools)
 
-    ~~Replace line 114 to 121 with the following code to initialize and push the directory to a GitHub repo automaticaly.---
+    ~~Replace line 114 to 121 with the following code to initialize and push the directory to a GitHub repo automaticaly.~~
 
     ```bash
     echo -e "Initialize the directory to a GitHub repo."
